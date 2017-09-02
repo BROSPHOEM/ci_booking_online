@@ -2,29 +2,35 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-	function __construct() {
-        parent::__construct();        
-        $this->load->helper('text');
-        $this->load->database();   
-        $this->load->helper('url');
-	$this->load->model('M_Categories','m_cat');
-       
-    }
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
 	public function index()
-	{	
-
-		$data = array();
-		$sql="SELECT * FROM categories";
-		$data['categories']=$this->m_cat->get_by_sql($sql,FALSE);
-		
-		$sql_product="SELECT * FROM products";
-		$data['products']=$this->m_cat->get_by_sql($sql_product,FALSE);
-                
+	{
+		$this->load->helper('url');
+		$data=array();
+		$data['head']="inc/v_head_home";
+		$data['header']="inc/v_header_home";
+		$data['footer']="inc/v_footer_home";
+		$data['download']="inc/v_download_home";
 		
 
-		//$this->load->helper('url');
-		$data['main_content']='layouts/template';
-		$this->load->view('layouts/v_home', $data);
-        }
-	
+
+		$data['page']="v_home";
+
+		$this->load->view('v_template',$data);
+	}
 }

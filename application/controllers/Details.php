@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categories extends CI_Controller {
+class Details extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -28,9 +28,10 @@ class Categories extends CI_Controller {
 		$data['something_sell']="inc/v_something_sell_categories";
 		
 		
+		
 
 
-		$data['page']="v_categories";
+		$data['page']="v_details";
 
 		$this->load->view('v_template',$data);
 	}
